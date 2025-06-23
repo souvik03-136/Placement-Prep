@@ -10,12 +10,27 @@ class TreeNode:
 class BSTIterator:
 
     def __init__(self, root: Optional[TreeNode]):
+        self.stack = []
+
+        while root:
+            self.stack.append(root)
+            root = root.left
+
+
 
     def next(self) -> int:
+        res = self.stack.pop() #this is only going to be called when the stack is non empty
+        cur = res.right
+        while cur:
+            self.stack.append(cur)
+            cur = cur.left
 
+        return res.val
     def hasNext(self) -> bool:
+        return self.stack != [] # checking if the stack is empty or not (T/F)
 
 # Your BSTIterator object will be instantiated and called as such:
 # obj = BSTIterator(root)
 # param_1 = obj.next()
 # param_2 = obj.hasNext()
+
