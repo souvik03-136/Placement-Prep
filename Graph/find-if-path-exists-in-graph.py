@@ -6,6 +6,7 @@ class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
         graph = {}
         for u, v in edges:
+
             if u not in graph:
                 graph[u] = []
             if v not in graph:
